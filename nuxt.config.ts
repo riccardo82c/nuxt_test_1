@@ -1,8 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	modules: ['@nuxt/eslint'],
+	modules: ['@nuxt/eslint', '@nuxt/icon'],
 	devtools: { enabled: true },
 	css: ['@picocss/pico'],
+	routeRules: {
+		'/': { isr: 3 },
+	},
 	compatibilityDate: '2025-04-27',
 	nitro: {
 		experimental: {

@@ -1,18 +1,17 @@
-import { tasksTable } from '~/server/database/schema'
+import { insertTaskSchema, tasksTable } from '~/server/database/schema'
 
 export default defineEventHandler(async (event) => {
 	const db = event.context.db
 
 	const body = await readBody(event)
 
-	if (
-		!body.title
-		|| typeof body.title !== 'string'
-		|| body.title.trim() === ''
-	) {
+	const validation = insertTaskSchema.safeParse(body)
+
+	if (!validation.success) {
 		throw createError({
 			statusCode: 400,
-			statusMessage: 'Il titolo è obbligatorio e non può essere vuoto',
+			statusMessage: 'Input non valido',
+			data: validation.error.issues,
 		})
 	}
 
@@ -25,8 +24,7 @@ export default defineEventHandler(async (event) => {
 			.returning()
 
 		return newTask
-	}
-	catch (error) {
+	} catch (error) {
 		console.log(error)
 
 		throw createError({
