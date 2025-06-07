@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const { data: tasks } = await useFetch('/api/tasks')
-console.log(tasks)
+console.log(tasks.value)
 </script>
 
 <template>
