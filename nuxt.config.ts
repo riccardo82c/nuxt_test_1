@@ -4,6 +4,11 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	css: ['@picocss/pico'],
 	compatibilityDate: '2025-04-27',
+	nitro: {
+		experimental: {
+			tasks: true,
+		},
+	},
 
 	eslint: {
 		config: {
