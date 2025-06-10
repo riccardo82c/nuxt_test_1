@@ -6,7 +6,7 @@ const feedbackMessage = ref('')
 const messageStatus = ref<'success' | 'error' | null>(null)
 
 const { data: tasks, refresh } = useFetch<Task[]>('/api/tasks', {
-	lazy: true, /* lazy a true forza il rendering della pagina anche se il rendering non è terminato */
+	// lazy: true, /* lazy a true forza il rendering della pagina anche se il rendering non è terminato */
 })
 
 async function toggleDone(task: Task) {

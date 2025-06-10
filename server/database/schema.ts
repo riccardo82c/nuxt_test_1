@@ -26,20 +26,6 @@ export const updateTaskSchema = createUpdateSchema(tasksTable).refine(
 	},
 )
 
-const task = {
-	done: '',
-}
-const parsed = updateTaskSchema.safeParse(task)
-
-if (parsed.success) {
-	console.log('Valido!')
-} else {
-	console.log('Non valido!', parsed)
-	parsed.error.issues.forEach((issue) => {
-		console.log(issue.message)
-	})
-}
-
 /* check safeParse */
 // const task = {
 // 	done: true,
